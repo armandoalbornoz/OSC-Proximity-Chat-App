@@ -5,6 +5,7 @@ import {
   Text,
   StyleSheet,
   Dimensions,
+  Image,
   KeyboardAvoidingView,
   Platform,
   TouchableWithoutFeedback,
@@ -12,6 +13,7 @@ import {
 } from "react-native";
 import { SignUpEmailInput, SignUpPasswordInput, SignUpConfirmPasswordInput } from "../Common/CustomInputs";
 import SignUpButton from "../Common/SignUpButton";
+
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { appSignUp } from "../../services/store";
 
@@ -57,8 +59,13 @@ const SignUpScreen = () => {
       >
         <View style={styles.main_container}>
           <View style={styles.header_container}>
-            <Text style={styles.header_text}>Welcome!</Text>
+            <Text style={styles.header_text}>Join us!</Text>
           </View>
+
+          <View style={styles.image_container}>
+              <Image style={styles.image} source={require('../../../assets/talking_location.png')} />
+          </View>
+
           <View style={styles.input_container}>
             <SignUpEmailInput
               value={email}
@@ -100,11 +107,26 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
 
+  image: {
+    maxWidth: Dimensions.get("window").width * 1,
+    maxHeight: Dimensions.get("window").height * 0.37,
+    resizeMode: "contain",
+  },
+
   button_container: {
     display: "flex",
     justifyContent: "space-around",
     alignItems: "center",
     width: "100%",
+  },
+
+  image_container: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    paddingBottom: 20,
+    paddingTop: 20
   },
 
   header_container: {
